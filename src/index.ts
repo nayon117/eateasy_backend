@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
+import userRoutes from './routes/userRoutes'
 
 // connect to database
 mongoose
@@ -13,11 +14,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// routes
 
-// routes and listener
-app.get("/test", async (req: Request, res: Response) => {
-  res.json({ message: "Hello World" });
-});
+app.use('/api/user', userRoutes)
+
+
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
