@@ -14,8 +14,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// routes
 
+app.get("/health", async (req: Request, res: Response) => {
+  res.send({message:"Health Ok!"});
+});
+
+// routes
 app.use('/api/user', userRoutes)
 
 
