@@ -12,7 +12,11 @@ mongoose
 // middleware  
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://eateasy-sw42.onrender.com',
+  methods: ['GET', 'POST', 'PUT','PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 
 app.get("/health", async (req: Request, res: Response) => {
@@ -20,7 +24,7 @@ app.get("/health", async (req: Request, res: Response) => {
 });
 
 // routes
-app.use('/api/user', userRoutes)
+app.use('/api/user',userRoutes)
 
 
 app.listen(5000, () => {
